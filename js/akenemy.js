@@ -316,13 +316,15 @@
                 // console.log(element)
                 currHtml.push(`<div id="enemyLevel${element.level}" class="btn btn-sm ak-btn ak-mid"style="display:inline;border: 1px #222;background:#111" onclick='enemyDetail(\"${el}\",${element.level},[${totalLevels}])'> Level ${element.level}</div>`)
             });
+            currHtml.push(`</div>`);
+            $('#enemyDetail').html(currHtml.join(""));
             enemyDetail(el,0, totalLevels);
         }else{
             $('#enemyDetail2').hide();
+            currHtml.push(`</div>`);
+            $('#enemyDetail').html(currHtml.join(""));
         }
-        currHtml.push(`</div>`)
         
-        $('#enemyDetail').html(currHtml.join(""))
         
         // console.log(el)
     }
