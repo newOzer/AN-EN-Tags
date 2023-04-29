@@ -314,7 +314,7 @@
             let totalLevels = currEnemyDetail.Value.map(value => value.level);
             currEnemyDetail.Value.forEach(element => {
                 // console.log(element)
-                currHtml.push(`<div id="enemyLevel${element.level}" class="btn btn-sm ak-btn ak-mid"style="display:inline;border: 1px #222;background:#111" onclick='enemyDetail(\"${el}\",${element.level},${totalLevels})'> Level ${element.level}</div>`)
+                currHtml.push(`<div id="enemyLevel${element.level}" class="btn btn-sm ak-btn ak-mid"style="display:inline;border: 1px #222;background:#111" onclick='enemyDetail(\"${el}\",${element.level},[${totalLevels}])'> Level ${element.level}</div>`)
             });
             enemyDetail(el,0, totalLevels);
         }else{
@@ -328,6 +328,7 @@
     }
 
     function enemyDetail(el,level, totalLevels){
+        console.log(totalLevels);
         for (const otherLevel of totalLevels) {
             if (otherLevel == level) {
                 $('#enemyLevel' + otherLevel).css("background", "#999");
