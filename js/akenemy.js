@@ -311,11 +311,12 @@
         
         if(currEnemyDetail){
             currHtml.push(`<div class="ak-c-black" style="text-align:center;margin-top:5px;background:#222"> Detail </div> <div class="ak-c-black" style="background:#222">`)
+            let totalLevels = currEnemyDetail.Value.map(value => value.level);
             currEnemyDetail.Value.forEach(element => {
                 // console.log(element)
-                currHtml.push(`<div class="btn btn-sm ak-btn ak-mid"style="display:inline;border: 1px #222;background:#111" onclick='enemyDetail(\"${el}\",${element.level})'> Level ${element.level}</div>`)
+                currHtml.push(`<div id="enemyLevel${element.level}" class="btn btn-sm ak-btn ak-mid"style="display:inline;border: 1px #222;background:#111" onclick='enemyDetail(\"${el}\",${element.level},${totalLevels})'> Level ${element.level}</div>`)
             });
-            enemyDetail(el,0)
+            enemyDetail(el,0, totalLevels);
         }else{
             $('#enemyDetail2').hide();
         }
@@ -326,7 +327,15 @@
         // console.log(el)
     }
 
-    function enemyDetail(el,level){
+    function enemyDetail(el,level, totalLevels){
+        for (const otherLevel of totalLevels) {
+            if (otherLevel == level) {
+                $('#enemyLevel' + otherLevel).css("background", "#999");
+            } else {
+                $('#enemyLevel' + otherLevel).css("background", "#111");
+            }
+        }
+        
         $('#enemyDetail2').empty();
         $('#enemyDetail2').hide();
         let currEnemy = query(db.enemy,"enemyId",el)
