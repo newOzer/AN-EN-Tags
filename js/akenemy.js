@@ -330,7 +330,6 @@
     }
 
     function enemyDetail(el,level, totalLevels){
-        console.log(totalLevels);
         for (const otherLevel of totalLevels) {
             if (otherLevel == level) {
                 $('#enemyLevel' + otherLevel).css("background", "#999");
