@@ -144,7 +144,9 @@
     }
     function clickBtnClear(){
         console.log(lang);
-        $("#tbody-list").empty()
+        $("#tbody-list").empty();
+        $("#enemyResult").empty();
+        $("#opname").val('');
     }
     function populateEnemy(el){
         // console.log(el)
